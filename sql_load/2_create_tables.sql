@@ -1,3 +1,4 @@
+-- Store the companies associated with job postings.
 CREATE TABLE public.company_dim
 (
     company_id INT PRIMARY KEY,
@@ -7,6 +8,7 @@ CREATE TABLE public.company_dim
     thumbnail TEXT
 );
 
+-- Store the skills that can be linked to job postings.
 CREATE TABLE public.skill_dim
 (
     skill_id INT PRIMARY KEY,
@@ -14,7 +16,7 @@ CREATE TABLE public.skill_dim
     type TEXT
 );
 
-
+-- Store the main job posting details and company relationship.
 CREATE TABLE public.job_postings_fact
 (
     job_id INT PRIMARY KEY,
@@ -36,6 +38,8 @@ CREATE TABLE public.job_postings_fact
     FOREIGN KEY (company_id) REFERENCES company_dim(company_id)
 );
 
+-- Bridge table that links jobs to their required skills.
+-- The composite primary key prevents duplicate job-skill pairs.
 CREATE TABLE public.skills_job_dim
 (
     job_id INT,
@@ -45,11 +49,13 @@ CREATE TABLE public.skills_job_dim
     FOREIGN KEY (skill_id) REFERENCES skill_dim(skill_id)
 );
 
+-- Assign table ownership to the PostgreSQL administrator role.
 ALTER TABLE public.job_postings_fact OWNER TO postgres;
 ALTER TABLE public.company_dim OWNER TO postgres;
 ALTER TABLE public.skill_dim OWNER TO postgres;
 ALTER TABLE public.skills_job_dim OWNER TO postgres;
 
+-- Index foreign-key columns to improve joins and relationship lookups.
 CREATE INDEX idx_company_id ON public.job_postings_fact(company_id);
 CREATE INDEX idx_job_id ON public.skills_job_dim(job_id);
 CREATE INDEX idx_skill_id ON public.skills_job_dim(skill_id);

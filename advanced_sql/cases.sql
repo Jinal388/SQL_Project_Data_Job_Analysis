@@ -1,3 +1,5 @@
+-- Categorize Data Analyst jobs by whether they are remote, local to New York,
+-- or onsite based on the text stored in the job location column.
 SELECT
     COUNT(job_id) AS number_of_jobs,
     CASE
@@ -12,6 +14,8 @@ WHERE
 GROUP BY
     location_category;
 
+-- Group Data Analyst jobs into salary bands using the annual salary value.
+-- Rows without an annual salary are excluded so they are not classified.
 SELECT
     COUNT(job_id) AS number_of_jobs,
     CASE
@@ -29,6 +33,7 @@ GROUP BY
 ORDER BY
     number_of_jobs DESC;
 
+-- Return the overall salary range recorded in the job postings table.
 SELECT
     MAX(salary_year_avg) AS highest_salary,
     MIN(salary_year_avg) AS lowest_salary

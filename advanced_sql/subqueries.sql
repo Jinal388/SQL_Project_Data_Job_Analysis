@@ -1,3 +1,5 @@
+-- Count the skills requested by remote Data Analyst job postings.
+-- The CTE performs the aggregation before skill names are joined in below.
 WITH remote_job_skills AS (
     SELECT
         skills_to_job.skill_id,
@@ -9,12 +11,14 @@ WITH remote_job_skills AS (
     ON
         skills_to_job.job_id = job_postings.job_id
     WHERE
+        -- Restrict the analysis to remote Data Analyst postings.
         job_postings.job_work_from_home = true AND
         job_postings.job_title_short = 'Data Analyst'
     GROUP BY
         skills_to_job.skill_id
 )
 
+-- Match each skill ID to its readable name and return the ten most requested skills.
 SELECT 
     remote_job_skills.skill_id,
     remote_job_skills.skill_count,
@@ -25,6 +29,6 @@ INNER JOIN
 ON
     remote_job_skills.skill_id = skills.skill_id
 ORDER BY
-
+    -- Highest skill counts appear first so LIMIT returns the top ten.
     remote_job_skills.skill_count DESC
 LIMIT 10;
