@@ -12,10 +12,7 @@ SELECT
 FROM
     job_postings_fact AS job_postings
 
-LEFT JOIN
-    company_dim as company
-ON
-    job_postings.company_id = company.company_id
+LEFT JOIN company_dim as company ON job_postings.company_id = company.company_id
 
 -- Keep remote Data Analyst jobs that include an annual salary.
 WHERE
