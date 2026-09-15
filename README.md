@@ -412,11 +412,6 @@ Data-Job-Analysis/
 │   ├── dates.sql
 │   ├── subqueries.sql
 │   └── union_operators.sql
-├── csv_files/
-│   ├── company_dim.csv
-│   ├── job_postings_fact.csv
-│   ├── skills_dim.csv
-│   └── skills_job_dim.csv
 ├── images/
 │   ├── q1_top_paying_jobs.png
 │   ├── q3_top_demanded_skills.png
@@ -428,29 +423,12 @@ Data-Job-Analysis/
 │   ├── 3_top_demanded_skills.sql
 │   ├── 4_top_skills_based_on_salary.sql
 │   └── 5_optimal_skills.sql
-├── results/
-│   ├── q1_top_paying_jobs.csv
-│   ├── q2_top_paying_job_skills.csv
-│   ├── q3_top_demanded_skills.csv
-│   ├── q4_top_skills_based_on_salary.csv
-│   └── q5_optimal_skills.csv
-├── scripts/
-│   └── generate_portfolio_assets.py
 ├── sql_load/
 │   ├── 1_create_database.sql
 │   ├── 2_create_tables.sql
 │   └── 3_modify_tables.sql
 └── .gitignore
 ```
-
-## ▶️ How to Run the Project
-
-1. Set up PostgreSQL locally or in a cloud PostgreSQL environment.
-2. Run the scripts in the `sql_load/` folder to create the database and tables.
-3. Import the CSV files from `csv_files/` into their corresponding tables.
-4. Open the SQL files in `project_sql/` and run them in sequence.
-5. Review the results in PostgreSQL or export them to CSV if needed.
-6. Use the generated assets in `results/` and `images/` for documentation and portfolio presentation.
 
 ## 🎯 Final Conclusion
 This project demonstrates how SQL can be used to analyze the modern Data Analyst market with real, business-relevant questions. The results show that high-paying roles tend to combine strong technical capabilities with business understanding, while the most frequently requested skills are centered on SQL, Excel, Python, Tableau, and Power BI.
@@ -459,4 +437,3 @@ For a data analyst portfolio, the value of this project is not just the queries 
 
 ---
 
-This project is ready to be used as a professional SQL portfolio asset for GitHub and recruiter review.
